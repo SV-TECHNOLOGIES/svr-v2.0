@@ -110,17 +110,8 @@
     "title": "What clients say after launch.",
     "items": [
       {
-        "quote": "They understood our operations faster than our own team did. The app launched on schedule and our order errors dropped within the first month."
-      },
-      {
-        "quote": "The AI agent now handles most first-line support questions. Our team finally has time for the conversations that need a person.",
+        "quote": "They understood our operations faster than our own team did. The app launched on schedule and our order errors dropped within the first month.",
         "role": "Head of Customer Success"
-      },
-      {
-        "quote": "Clear scope, weekly demos, no surprises. It is the first agency engagement where the code review process was visible to us."
-      },
-      {
-        "quote": "An approval process that took days now runs in minutes. The automation paid for itself in the first quarter."
       }
     ]
   },

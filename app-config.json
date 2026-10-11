@@ -45,7 +45,6 @@
     "links": [
       { "label": "Home", "href": "/" },
       { "label": "Projects", "href": "/portfolio" },
-
       { "label": "About Us", "href": "/team" },
       { "label": "Contact", "href": "/#contact" }
     ],
@@ -180,174 +179,78 @@
   },
   "portfolio": {
     "eyebrow": "Project Portfolio",
-    "title": "Production systems engineered for measurable business impact.",
-    "intro": "Explore recent web platforms, cross-platform mobile applications, autonomous AI agents, and enterprise automations shipped by our Hyderabad studio.",
+    "title": "Real software, built for real organisations.",
+    "intro": "A selection of public projects shipped by our Hyderabad studio. Much of our work is delivered under NDA, so we only show what our clients have allowed us to share.",
     "filters": [
       "All",
-      "Websites",
-      "Mobile Apps",
-      "AI Agents",
-      "Automations"
+      "Websites"
     ],
+    "confidentialNote": {
+      "title": "More work under NDA",
+      "text": "We have also delivered websites, apps, and automations that our clients keep confidential. Happy to walk you through relevant examples on a call.",
+      "cta": {
+        "label": "Book a call",
+        "href": "/#contact"
+      }
+    },
     "projects": [
       {
-        "id": "omnichannel-commerce",
-        "title": "Apex Logistics & Fleet Command",
+        "id": "mitra",
+        "title": "MITRA UK Community Platform",
         "category": "Websites",
-        "client": "Apex Transports Ltd",
-        "description": "Real-time fleet tracking, automated route dispatching, and driver assignment portal engineered to eliminate dispatch delays and telemetry latency.",
-        "scale": "50,000+ daily telemetry events & 800+ live trucks",
-        "timeline": "8 Weeks",
-        "impact": "Reduced dispatch turnaround by 42% and saved ₹18L monthly in fuel routing inefficiencies.",
-        "tags": ["Next.js", "WebSockets", "Go", "PostgreSQL", "Tailwind CSS"],
+        "client": "MITRA UK (Mana Indian Telugu Roots Abroad)",
+        "description": "Community platform for a UK-wide Telugu organisation: event pages, online RSVPs, Stripe payments, member login, and an interactive 3D hero, all managed from one system.",
+        "scale": "2K+ RSVPs and 100+ Stripe payments",
+        "timeline": "",
+        "impact": "Handled 2K+ event RSVPs and 100+ Stripe payments within 2 months of launch.",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "Stripe",
+          "Three.js",
+          "Tailwind CSS"
+        ],
         "featured": true,
-        "link": "https://svrtechgroups.com"
+        "link": "https://www.mitrauk.com"
       },
       {
-        "id": "ai-legal-intake-agent",
-        "title": "LexiAssist Autonomous Legal Intake Agent",
-        "category": "AI Agents",
-        "client": "Athena Corporate Counsel",
-        "description": "Multi-agent conversational workflow that reviews NDA contracts, extracts risk clauses, drafts redlines, and synchronizes with Clio practice management.",
-        "scale": "12,000+ contracts processed per month",
-        "timeline": "6 Weeks",
-        "impact": "Trimmed preliminary NDA review turnaround from 3 days down to 4 minutes with 99.4% precision.",
-        "tags": ["Claude 3.5 Sonnet", "Python", "FastAPI", "Vector DB", "LangGraph"],
-        "featured": true
-      },
-      {
-        "id": "pulse-health-app",
-        "title": "PulseCare Offline-First Telehealth Suite",
-        "category": "Mobile Apps",
-        "client": "PulseHealth Clinics",
-        "description": "Patient care and clinical triage mobile application supporting encrypted offline consult notes, bi-directional sync, and lab test delivery tracking.",
-        "scale": "120,000+ registered active patients",
-        "timeline": "10 Weeks",
-        "impact": "Surpassed 4.9 App Store rating and expanded rural clinic intake by 3.2x without network dropouts.",
-        "tags": ["React Native", "iOS & Android", "WatermelonDB", "Node.js"],
-        "featured": true
-      },
-      {
-        "id": "finflow-claims-automation",
-        "title": "FinFlow Automated Invoice & Reconciliation Engine",
-        "category": "Automations",
-        "client": "Zenith Financial Services",
-        "description": "End-to-end multi-currency OCR invoice extraction and two-way ERP reconciliation pipeline linking SAP and Tally with automated exception routing.",
-        "scale": "₹45 Cr monthly transaction volume reconciled",
-        "timeline": "5 Weeks",
-        "impact": "Cut manual accounts payable reconciliation hours by 85% with zero human calculation errors.",
-        "tags": ["Python", "OCR Vision", "SAP API", "PostgreSQL", "Docker"],
-        "featured": false
-      },
-      {
-        "id": "strata-property-platform",
-        "title": "StrataHQ Commercial Tenant Experience Portal",
+        "id": "neeom",
+        "title": "NEEOM Design Studio Website",
         "category": "Websites",
-        "client": "Strata Realty Capital",
-        "description": "High-conversion leasing storefront combined with self-service tenant lease renewals, maintenance ticketing, and payment gateway integration.",
-        "scale": "42 commercial towers across South India",
-        "timeline": "7 Weeks",
-        "impact": "Achieved 91% automated lease renewal adoption within the first 60 days of tenant onboarding.",
-        "tags": ["Next.js", "TypeScript", "Stripe", "Prisma"],
-        "featured": false
-      },
-      {
-        "id": "support-voice-agent",
-        "title": "OmniVoice Customer Concierge Agent",
-        "category": "AI Agents",
-        "client": "HyperDirect Retail",
-        "description": "Sub-600ms latency voice AI assistant handling customer order status, exchanges, and warranty questions with sentiment-aware human escalation.",
-        "scale": "25,000+ incoming support inquiries weekly",
-        "timeline": "6 Weeks",
-        "impact": "Resolved 71% of Tier-1 support inquiries without representative intervention.",
-        "tags": ["Whisper", "WebRTC", "LLM Tool Calling", "Twilio"],
-        "featured": false
+        "client": "NEEOM Designs",
+        "description": "Portfolio and lead-generation website for a Hyderabad architecture and interior design studio, with project gallery, services, reviews, light/dark themes, and a secure content admin with image uploads.",
+        "scale": "",
+        "timeline": "",
+        "impact": "",
+        "tags": [
+          "Next.js",
+          "TypeScript",
+          "Prisma",
+          "shadcn/ui",
+          "AWS S3",
+          "Tailwind CSS"
+        ],
+        "featured": true,
+        "link": "https://neeom.vercel.app"
       }
     ]
   },
   "reviews": {
+    "enabled": false,
     "eyebrow": "Client Reviews",
-    "title": "Verified outcomes and feedback from founders, CTOs, and operators.",
-    "intro": "Every engagement is measured by delivered software, team velocity, and business results. Here is what engineering leaders and founders share about partnering with SVR Tech Groups.",
-    "averageRating": 4.9,
-    "totalReviews": 34,
-    "highlights": [
-      { "label": "On-Time Delivery", "value": "98%" },
-      { "label": "Client Retention", "value": "92%" },
-      { "label": "Average ROI", "value": "3.8x" }
-    ],
-    "items": [
+    "title": "What our clients say.",
+    "intro": "Feedback from the organisations we have built for.",
+    "averageRating": null,
+    "totalReviews": 0,
+    "highlights": [],
+    "items": [],
+    "pending": [
       {
-        "id": "rev-1",
-        "quote": "They understood our operations faster than our own team did. The app launched on schedule and our order errors dropped within the first month. The transparency during development set a new benchmark for us.",
-        "name": "Arjun Rao",
-        "role": "Founder & CEO",
-        "company": "FleetNova Logistics",
-        "project": "Apex Logistics & Fleet Command",
-        "date": "September 2025",
-        "rating": 5,
-        "verified": true,
-        "avatar": "AR"
-      },
-      {
-        "id": "rev-2",
-        "quote": "The AI agent now handles most first-line support questions. Our team finally has time for the conversations that need a person. What impressed me most was how seamlessly they grounded the agent in our proprietary knowledge base.",
-        "name": "Priyanka Sharma",
-        "role": "Head of Customer Success",
-        "company": "Athena Legal Tech",
-        "project": "LexiAssist Contract Agent",
-        "date": "August 2025",
-        "rating": 5,
-        "verified": true,
-        "avatar": "PS"
-      },
-      {
-        "id": "rev-3",
-        "quote": "Clear scope, weekly demos, no surprises. It is the first agency engagement where the code review process was visible to us. Clean TypeScript architecture, automated test suites, and fast deployment pipelines.",
-        "name": "Karthik Subramanian",
-        "role": "Chief Technology Officer",
-        "company": "Kinetix Digital Labs",
-        "project": "Cloud Infrastructure & App Re-architecture",
-        "date": "July 2025",
-        "rating": 5,
-        "verified": true,
-        "avatar": "KS"
-      },
-      {
-        "id": "rev-4",
-        "quote": "An approval process that took days now runs in minutes. The automation paid for itself in the first quarter. Their team took full ownership from architectural diagram to production rollout.",
-        "name": "Deepak Verma",
-        "role": "Operations Director",
-        "company": "Zenith FinCorp",
-        "project": "FinFlow Automation Pipeline",
-        "date": "June 2025",
-        "rating": 5,
-        "verified": true,
-        "avatar": "DV"
-      },
-      {
-        "id": "rev-5",
-        "quote": "SVR Tech Groups took our legacy portal and transformed it into a lightning-fast Next.js application in under 7 weeks. Our Lighthouse performance score went from 48 to 98.",
-        "name": "Meera Nambiar",
-        "role": "VP of Product",
-        "company": "Strata Realty",
-        "project": "StrataHQ Tenant Portal",
-        "date": "May 2025",
-        "rating": 5,
-        "verified": true,
-        "avatar": "MN"
-      },
-      {
-        "id": "rev-6",
-        "quote": "Reliable, technically sound, and remarkably fast. They do not just write code; they act as an extension of your product leadership team.",
-        "name": "Siddharth Reddy",
-        "role": "Co-Founder",
-        "company": "HyperDirect Omnichannel",
-        "project": "OmniVoice AI Assistant",
-        "date": "April 2025",
-        "rating": 5,
-        "verified": true,
-        "avatar": "SR"
+        "id": "rev-mitra",
+        "project": "MITRA UK Community Platform",
+        "company": "MITRA UK",
+        "todo": true
       }
     ]
   },
@@ -372,7 +275,6 @@
         "skills": ["Distributed Systems", "LLM Orchestration", "Next.js", "Go", "Cloud Architecture"],
         "social": {
           "linkedin": "https://www.linkedin.com/company/svr-tech-groups/",
-          "github": "https://github.com",
           "email": "svrtechgroups@gmail.com"
         }
       },
@@ -414,46 +316,18 @@
         "impact": "Maintained 100/100 Lighthouse performance and accessibility benchmarks across all client web launches.",
         "skills": ["Three.js / R3F", "Tailwind CSS", "Framer Motion", "GSAP", "Web Performance"],
         "social": {
-          "linkedin": "https://www.linkedin.com/company/svr-tech-groups/",
-          "github": "https://github.com"
+          "linkedin": "https://www.linkedin.com/company/svr-tech-groups/"
         }
       }
     ]
   },
   "testimonials": {
+    "enabled": false,
     "viewMore": {
       "label": "View More Reviews",
       "href": "/reviews"
     },
-    "items": [
-      {
-        "name": "Client Name",
-        "role": "Founder & CEO",
-        "company": "Company Name",
-        "rating": 5,
-        "todo": true
-      },
-      {
-        "name": "Client Name",
-        "company": "Company Name",
-        "rating": 5,
-        "todo": true
-      },
-      {
-        "name": "Client Name",
-        "role": "CTO",
-        "company": "Company Name",
-        "rating": 5,
-        "todo": true
-      },
-      {
-        "name": "Client Name",
-        "role": "Operations Director",
-        "company": "Company Name",
-        "rating": 5,
-        "todo": true
-      }
-    ]
+    "items": []
   },
   "contact": {
     "projectTypes": [

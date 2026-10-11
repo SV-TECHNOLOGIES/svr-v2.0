@@ -8,7 +8,7 @@ import { nav, site } from "@/content/site";
 import strings from "@/strings.json";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Close, Menu } from "@/components/ui/icons";
+import { ArrowRight, Close, Menu, WhatsApp } from "@/components/ui/icons";
 import { useSmoothScroll } from "@/components/providers/SmoothScroll";
 import { EASE } from "@/lib/constants";
 
@@ -149,6 +149,18 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
+            {site.contact.whatsappHref && (
+              <a
+                href={site.contact.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with us on WhatsApp"
+                className="ease-svr shadow-chip hover:shadow-card group inline-flex h-11 items-center justify-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 text-xs font-semibold tracking-wide text-emerald-700 transition-all duration-300 hover:bg-emerald-500 hover:text-white sm:h-11 sm:px-4 sm:text-sm"
+              >
+                <WhatsApp className="h-4 w-4 fill-current transition-transform duration-300 group-hover:scale-110" />
+                <span className="hidden sm:inline">WhatsApp</span>
+              </a>
+            )}
             <Button
               href={nav.cta.href}
               size="md"
@@ -238,15 +250,28 @@ export function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.4 }}
             >
-              <a
-                href={nav.cta.href}
-                onClick={(e) => go(e, nav.cta.href)}
-                className="btn btn-lg btn-primary w-full text-white"
-              >
-                <span className="btn-face">
-                  {nav.cta.label} <ArrowRight className="h-4 w-4" />
-                </span>
-              </a>
+              <div className="flex flex-col gap-2.5">
+                {site.contact.whatsappHref && (
+                  <a
+                    href={site.contact.whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-base font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#20ba5a]"
+                  >
+                    <WhatsApp className="h-4.5 w-4.5 fill-current" />
+                    Chat on WhatsApp
+                  </a>
+                )}
+                <a
+                  href={nav.cta.href}
+                  onClick={(e) => go(e, nav.cta.href)}
+                  className="btn btn-lg btn-primary w-full text-white"
+                >
+                  <span className="btn-face">
+                    {nav.cta.label} <ArrowRight className="h-4 w-4" />
+                  </span>
+                </a>
+              </div>
               <p className="text-muted mt-5 text-center text-sm">
                 <a
                   href={`mailto:${site.contact.email}`}
