@@ -1,0 +1,184 @@
+{
+  "site": {
+    "positioning": "AI-accelerated. Human-verified. Shipped fast.",
+    "seo": {
+      "title": "SVR Tech Groups | Custom Software, Mobile Apps, AI Agents & Automation",
+      "description": "SVR Tech Groups is a Hyderabad software studio building websites, mobile apps, AI agents, and AI workflow automations. AI-accelerated, human-verified, shipped fast."
+    },
+    "contact": {
+      "location": "Hyderabad, Telangana, India",
+      "replyTime": "Typically replies within 24 hours"
+    }
+  },
+  "nav": {
+    "skipToContent": "Skip to content"
+  },
+  "hero": {
+    "eyebrow": "Custom software studio · Hyderabad",
+    "headline": {
+      "part1": "Custom software, built ",
+      "part2": "faster with AI.",
+      "part3": "Without cutting corners.",
+      "full": "Custom software, built faster with AI."
+    },
+    "subtext": "SVR Tech Groups builds websites, mobile apps, AI agents, and AI workflow automations that solve real business problems.",
+    "secondaryCta": "See How We Build",
+    "chipsAria": "What we build",
+    "scrollHintAria": "Scroll to how we build"
+  },
+  "howWeBuild": {
+    "eyebrow": "How we build",
+    "title": "From idea to shipped software, in five calm steps.",
+    "intro": "AI speeds up the work. Engineers own every decision. Nothing ships unverified.",
+    "indicators": {
+      "build": "AI-assisted build velocity"
+    },
+    "steps": [
+      {
+        "body": "We understand the real problem, your users, and the goals that matter.",
+        "points": [
+          "User and workflow mapping",
+          "Success metrics agreed"
+        ]
+      },
+      {
+        "body": "UX, system architecture, and a clear scope, before a line of production code.",
+        "points": [
+          "UX flows and prototypes",
+          "Fixed, written scope"
+        ]
+      },
+      {
+        "title": "AI-Accelerated Build",
+        "body": "AI speeds up development inside our standard engineering framework.",
+        "points": [
+          "Typed, reviewed code"
+        ]
+      },
+      {
+        "title": "Human-Verified QA",
+        "body": "Every change passes code review, automated tests, and security and performance checks.",
+        "points": [
+          "Senior code review",
+          "Automated test suites",
+          "Security and performance gates"
+        ]
+      },
+      {
+        "title": "Launch & Evolve",
+        "body": "We deploy, monitor, and keep improving once real users arrive.",
+        "points": [
+          "Monitoring and alerts"
+        ]
+      }
+    ]
+  },
+  "impact": {
+    "title": "Measured by what changes for your business.",
+    "outcome": "We measure success by what our software changes for your business: time saved, revenue unlocked, work automated."
+  },
+  "services": {
+    "title": "Four ways we turn problems into working software.",
+    "intro": "One team, one process, from first sketch to production.",
+    "items": {
+      "websites": {
+        "body": "Fast, accessible websites and web apps that load quickly, rank well, and convert."
+      },
+      "mobileApps": {
+        "body": "iOS and Android apps your customers keep coming back to, built from one codebase.",
+        "tags": [
+          "iOS & Android"
+        ]
+      },
+      "aiAgents": {
+        "body": "Assistants that answer, act, and hand off to humans, grounded in your own data.",
+        "tags": [
+          "Custom GPT & Claude",
+          "RAG on your data"
+        ]
+      },
+      "aiWorkflowAutomation": {
+        "title": "AI Workflow Automation",
+        "body": "Repetitive work, automated end to end, so your team can focus on the work that needs them.",
+        "tags": [
+          "CRM & ERP sync"
+        ]
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What clients say after launch.",
+    "items": [
+      {
+        "quote": "They understood our operations faster than our own team did. The app launched on schedule and our order errors dropped within the first month."
+      },
+      {
+        "quote": "The AI agent now handles most first-line support questions. Our team finally has time for the conversations that need a person.",
+        "role": "Head of Customer Success"
+      },
+      {
+        "quote": "Clear scope, weekly demos, no surprises. It is the first agency engagement where the code review process was visible to us."
+      },
+      {
+        "quote": "An approval process that took days now runs in minutes. The automation paid for itself in the first quarter."
+      }
+    ]
+  },
+  "portfolio": {
+    "eyebrow": "Project Portfolio",
+    "title": "Production systems engineered for measurable business impact.",
+    "intro": "Explore recent web platforms, cross-platform mobile applications, autonomous AI agents, and enterprise automations shipped by our Hyderabad studio."
+  },
+  "reviews": {
+    "eyebrow": "Client Reviews",
+    "title": "Verified outcomes and feedback from founders, CTOs, and operators.",
+    "intro": "Every engagement is measured by delivered software, team velocity, and business results. Here is what engineering leaders and founders share about partnering with SVR Tech Groups."
+  },
+  "team": {
+    "eyebrow": "Our Team",
+    "title": "Senior builders, systems architects, and AI practitioners.",
+    "intro": "We do not hand your project off to junior subcontractors. Our core studio team consists of seasoned engineers who design, code, and take end-to-end accountability for every line that ships."
+  },
+  "contact": {
+    "title": "Have a problem worth solving? Let's build it.",
+    "intro": "Tell us what you are trying to fix. We will reply with honest next steps, not a sales script.",
+    "budgets": {
+      "under1Lakh": "Under ₹1 lakh",
+      "notSureYet": "Not sure yet"
+    },
+    "stageCaption": "Your project is next.",
+    "success": {
+      "body": "Thank you. Your project is next in line. We will be in touch shortly.",
+      "reset": "Send another message"
+    },
+    "error": "Something went wrong while sending. Please try again, or email us directly.",
+    "form": {
+      "messageLabel": "What are you trying to solve?",
+      "privacy": "We never share your details."
+    },
+    "validation": {
+      "nameRequired": "Please enter your name.",
+      "nameTooLong": "That name is a little long.",
+      "emailRequired": "Please enter your email address.",
+      "emailTooLong": "That email looks too long.",
+      "emailInvalid": "Please enter a valid email address.",
+      "phoneTooLong": "That number looks too long.",
+      "phoneInvalid": "Please enter a valid phone number.",
+      "companyTooLong": "That company name is a little long.",
+      "projectTypeRequired": "Please choose a project type.",
+      "budgetRequired": "Please choose a budget range.",
+      "messageTooShort": "A few more details help us reply usefully (20+ characters).",
+      "messageTooLong": "Please keep it under 4000 characters."
+    },
+    "api": {
+      "rateLimited": "Too many messages in a short time. Please try again later, or email us directly.",
+      "formInvalid": "Please check the form and try again.",
+      "deliveryFailed": "We couldn't send your message right now. Please email us directly:"
+    }
+  },
+  "footer": {
+    "tagline": "AI-accelerated. Human-verified. Shipped fast.",
+    "blurb": "A custom software studio in Hyderabad building websites, mobile apps, AI agents, and automations.",
+    "copyright": "© 2026 SVR Tech Groups. All rights reserved."
+  }
+}

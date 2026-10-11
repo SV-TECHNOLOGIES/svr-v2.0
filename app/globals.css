@@ -1,0 +1,587 @@
+@import "tailwindcss";
+
+/*
+ * ─── DESIGN TOKENS ─────────────────────────────────────────────────────────
+ * Tailwind v4 is configured in CSS: every token below becomes both a utility
+ * (bg-primary, text-navy, font-display, text-h1, ease-svr, shadow-card …) and
+ * a CSS variable (var(--color-primary) …) usable anywhere.
+ */
+@theme {
+  /* Colors — white + blue */
+  --color-bg: #ffffff;
+  --color-bg-tint: #f4f8ff;
+  --color-primary: #1d4ed8;
+  --color-accent: #3b82f6;
+  --color-glow: #93c5fd;
+  --color-navy: #0b1f4b;
+  --color-ink: #1e293b;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+
+  /* Typography */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: clamp(2.6rem, 1.55rem + 4.1vw, 5rem);
+  --text-display--line-height: 1.03;
+  --text-display--letter-spacing: -0.038em;
+  --text-h1: clamp(2.1rem, 1.5rem + 2.4vw, 3.6rem);
+  --text-h1--line-height: 1.06;
+  --text-h1--letter-spacing: -0.032em;
+  --text-h2: clamp(1.6rem, 1.3rem + 1.1vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.025em;
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-lead--line-height: 1.6;
+
+  /* Shape + depth */
+  --radius-card: 16px;
+  --shadow-chip: 0 1px 2px rgb(29 78 216 / 0.06), 0 4px 12px -6px rgb(29 78 216 / 0.18);
+  --shadow-card:
+    0 1px 2px rgb(29 78 216 / 0.05), 0 8px 24px -10px rgb(29 78 216 / 0.16),
+    0 28px 56px -28px rgb(11 31 75 / 0.22);
+  --shadow-card-hover:
+    0 2px 4px rgb(29 78 216 / 0.06), 0 18px 40px -14px rgb(29 78 216 / 0.26),
+    0 48px 80px -36px rgb(11 31 75 / 0.3);
+
+  /* Motion — the single easing curve used everywhere */
+  --ease-svr: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --container-site: 1280px;
+}
+
+/* ─── BASE ─────────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: rgb(147 197 253 / 0.55);
+    color: var(--color-navy);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ─── LAYOUT HELPERS ──────────────────────────────────────────────────── */
+
+@utility container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Near layer: content sits above the WebGL canvas (z-1) and far layers (z-0). */
+@utility layer-near {
+  position: relative;
+  z-index: 2;
+}
+
+@utility text-gradient {
+  background: linear-gradient(100deg, #1d4ed8 0%, #2563eb 45%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-glow));
+  }
+
+  /* ─── FAR LAYER: grid + glows ─────────────────────────────────────────── */
+
+  .far-grid {
+    background-image:
+      linear-gradient(to right, rgb(29 78 216 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(29 78 216 / 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 75%);
+  }
+  .far-grid-dark {
+    background-image:
+      linear-gradient(to right, rgb(147 197 253 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(147 197 253 / 0.07) 1px, transparent 1px);
+  }
+  .far-glow {
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+  }
+
+  /* Mouse parallax via global --mx/--my (set by <PointerDepth>). */
+  .mouse-depth {
+    translate: calc(var(--mx, 0) * var(--pd, 0) * 1px) calc(var(--my, 0) * var(--pd, 0) * 1px);
+    will-change: transform;
+  }
+
+  /* ─── BUTTONS ─────────────────────────────────────────────────────────── */
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    font-weight: 600;
+    white-space: nowrap;
+    isolation: isolate;
+    transform-style: preserve-3d;
+    transition:
+      box-shadow 0.6s var(--ease-svr),
+      background-color 0.6s var(--ease-svr);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-face {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    transform: perspective(600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.5s var(--ease-svr);
+  }
+  .btn-md {
+    height: 2.875rem;
+    padding-inline: 1.35rem;
+    font-size: 0.9375rem;
+  }
+  .btn-lg {
+    height: 3.5rem;
+    padding-inline: 1.85rem;
+    font-size: 1rem;
+  }
+  .btn-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      120px circle at var(--gx, 50%) var(--gy, 50%),
+      rgb(255 255 255 / 0.45),
+      transparent 65%
+    );
+    transition: opacity 0.5s var(--ease-svr);
+  }
+  .btn:hover .btn-glare {
+    opacity: 1;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2152e0 50%, #2563eb 100%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.25),
+      0 1px 2px rgb(29 78 216 / 0.3),
+      0 10px 24px -8px rgb(29 78 216 / 0.55),
+      0 24px 40px -20px rgb(37 99 235 / 0.5);
+  }
+  .btn-primary:hover {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.3),
+      0 2px 4px rgb(29 78 216 / 0.3),
+      0 16px 32px -10px rgb(29 78 216 / 0.6),
+      0 36px 56px -24px rgb(37 99 235 / 0.55);
+  }
+  .btn-secondary {
+    background: rgb(255 255 255 / 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-chip);
+  }
+  .btn-secondary:hover {
+    border-color: rgb(29 78 216 / 0.3);
+    box-shadow: var(--shadow-card);
+  }
+  .btn-secondary .btn-glare {
+    background: radial-gradient(
+      120px circle at var(--gx, 50%) var(--gy, 50%),
+      rgb(147 197 253 / 0.35),
+      transparent 65%
+    );
+  }
+  .btn-light {
+    background: #fff;
+    box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.4);
+  }
+  .btn:disabled {
+    opacity: 0.7;
+    cursor: progress;
+  }
+
+  /* ─── TILT CARD ───────────────────────────────────────────────────────── */
+
+  .tilt-card {
+    position: relative;
+    border-radius: var(--radius-card);
+    transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.7s var(--ease-svr),
+      box-shadow 0.7s var(--ease-svr);
+  }
+  .tilt-card[data-tilting] {
+    transition:
+      transform 0.25s var(--ease-svr),
+      box-shadow 0.7s var(--ease-svr);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .tilt-glare {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      420px circle at var(--gx, 50%) var(--gy, 0%),
+      rgb(255 255 255 / 0.55),
+      transparent 55%
+    );
+    mix-blend-mode: soft-light;
+    transition: opacity 0.6s var(--ease-svr);
+  }
+  .tilt-card[data-tilting] .tilt-glare {
+    opacity: 1;
+  }
+  .depth-1 {
+    transform: translateZ(18px);
+  }
+  .depth-2 {
+    transform: translateZ(36px);
+  }
+  .depth-3 {
+    transform: translateZ(56px);
+  }
+
+  /* Glass surface used by panels and cards. */
+  .glass {
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.92), rgb(244 248 255 / 0.82));
+    border: 1px solid rgb(255 255 255 / 0.9);
+    outline: 1px solid rgb(29 78 216 / 0.07);
+    outline-offset: -1px;
+  }
+  @media (min-width: 768px) {
+    .glass {
+      background: linear-gradient(160deg, rgb(255 255 255 / 0.78), rgb(244 248 255 / 0.62));
+      backdrop-filter: blur(14px) saturate(1.2);
+    }
+  }
+
+  .glass-fill {
+    background: linear-gradient(170deg, rgb(255 255 255 / 0.94), rgb(244 248 255 / 0.9));
+  }
+  @media (min-width: 768px) {
+    .glass-fill {
+      background: linear-gradient(170deg, rgb(255 255 255 / 0.82), rgb(244 248 255 / 0.74));
+      backdrop-filter: blur(14px) saturate(1.2);
+    }
+  }
+
+  /* Testimonial deck cards: near-opaque so cards behind never show through. */
+  .deck-card {
+    background: linear-gradient(165deg, #ffffff 0%, #f7faff 100%);
+    border: 1px solid rgb(29 78 216 / 0.08);
+    box-shadow: var(--shadow-card);
+    backface-visibility: hidden;
+  }
+
+  /* Panels that tilt towards the cursor anywhere on screen (Impact stats). */
+  .cursor-tilt {
+    transform: perspective(900px) rotateX(calc(var(--my, 0) * -7deg))
+      rotateY(calc(var(--mx, 0) * 9deg));
+  }
+
+  /* ─── FORM FIELDS ─────────────────────────────────────────────────────── */
+
+  .field-control {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--color-line);
+    background: rgb(255 255 255 / 0.9);
+    padding: 1.35rem 1rem 0.45rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+    box-shadow: inset 0 1px 2px rgb(11 31 75 / 0.04);
+    transition:
+      border-color 0.4s var(--ease-svr),
+      box-shadow 0.4s var(--ease-svr);
+  }
+  .field-control:hover {
+    border-color: rgb(29 78 216 / 0.3);
+  }
+  .field-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 4px rgb(59 130 246 / 0.15),
+      0 8px 20px -12px rgb(29 78 216 / 0.4);
+  }
+  .field-control[aria-invalid="true"] {
+    border-color: #dc2626;
+  }
+  .field-control[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 4px rgb(220 38 38 / 0.12);
+  }
+  .field-label {
+    position: absolute;
+    left: 1rem;
+    top: 1.05rem;
+    font-size: 1rem;
+    color: var(--color-muted);
+    pointer-events: none;
+    transform-origin: left top;
+    transition:
+      transform 0.35s var(--ease-svr),
+      color 0.35s var(--ease-svr);
+  }
+  .peer:focus ~ .field-label,
+  .peer:not(:placeholder-shown) ~ .field-label,
+  .field-label-floated {
+    transform: translateY(-0.6rem) scale(0.78);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+  .peer:not(:focus):not(:placeholder-shown) ~ .field-label,
+  .field-label-floated {
+    color: var(--color-muted);
+  }
+  .field-error {
+    min-height: 1.25rem;
+    padding: 0.35rem 0.25rem 0;
+    font-size: 0.8125rem;
+    color: #b91c1c;
+  }
+
+  /* ─── REVEALS ─────────────────────────────────────────────────────────── */
+
+  /* Hidden only when JS motion is active (class set by an inline head script). */
+  html.js-motion [data-reveal-group] > *,
+  html.js-motion [data-reveal-self] {
+    opacity: 0;
+  }
+
+  /* Hero: pure-CSS reveal so it plays on first paint, before hydration. */
+  @keyframes rise-from-depth {
+    from {
+      opacity: 0;
+      transform: perspective(900px) translate3d(0, 28px, -140px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .hero-reveal {
+    animation: rise-from-depth 0.7s var(--ease-svr) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* ─── LATTICE LAYER ───────────────────────────────────────────────────── */
+
+  .lattice-layer {
+    opacity: 0;
+    transition: opacity 0.9s var(--ease-svr);
+  }
+  .lattice-layer[data-ready],
+  .lattice-layer:has(.lattice-fallback) {
+    opacity: 1;
+  }
+  .lattice-layer[data-ready][style*="opacity: 0"] {
+    transition-duration: 0.3s;
+  }
+
+  .lattice-loader {
+    transition: opacity 0.5s var(--ease-svr);
+  }
+  .lattice-loader[data-hidden] {
+    opacity: 0;
+  }
+  @keyframes loader-progress {
+    from {
+      transform: scaleX(0.05);
+    }
+    to {
+      transform: scaleX(0.92);
+    }
+  }
+  .lattice-loader-bar {
+    transform-origin: left;
+    animation: loader-progress 1.3s var(--ease-svr) forwards;
+  }
+
+  /* SVG fallback lattice layers */
+  .fallback-layer {
+    position: absolute;
+    pointer-events: none;
+  }
+  .fallback-layer[data-depth="far"] {
+    inset: -10%;
+    width: 120%;
+    height: 120%;
+    translate: calc(var(--mx, 0) * 8px) calc(var(--sp, 0) * -60px + var(--my, 0) * 8px);
+  }
+  .fallback-layer[data-depth="mid"] {
+    right: -6vw;
+    top: 50%;
+    width: min(58vw, 680px);
+    height: min(58vw, 680px);
+    margin-top: calc(min(58vw, 680px) / -2);
+    opacity: 0.85;
+    translate: calc(var(--mx, 0) * 16px) calc(var(--sp, 0) * -160px + var(--my, 0) * 16px);
+  }
+  .fallback-layer[data-depth="near"] {
+    inset: -10%;
+    width: 120%;
+    height: 120%;
+    translate: calc(var(--mx, 0) * 30px) calc(var(--sp, 0) * -320px + var(--my, 0) * 30px);
+  }
+  @media (max-width: 767px) {
+    .fallback-layer[data-depth="mid"] {
+      right: -30vw;
+      top: 22%;
+      width: 90vw;
+      height: 90vw;
+      margin-top: -45vw;
+      opacity: 0.45;
+    }
+  }
+
+  /* Process progress rail: horizontal on mobile, vertical on desktop. */
+  .rail-fill {
+    transform-origin: left center;
+    transform: scaleX(var(--p, 0));
+  }
+  @media (min-width: 768px) {
+    .rail-fill {
+      transform-origin: center top;
+      transform: scaleY(var(--p, 0));
+    }
+  }
+
+  /* ─── MISC ────────────────────────────────────────────────────────────── */
+
+  @keyframes scroll-dot {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+  }
+  .scroll-dot {
+    animation: scroll-dot 1.8s var(--ease-svr) infinite;
+  }
+
+  @keyframes flow-dash {
+    to {
+      background-position: 40px 0;
+    }
+  }
+  .flow-track {
+    background-image: linear-gradient(90deg, var(--color-accent) 0 6px, transparent 6px 20px);
+    background-size: 20px 2px;
+    background-repeat: repeat-x;
+    animation: flow-dash 0.6s linear infinite;
+  }
+
+  @keyframes live-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  .live-ping {
+    animation: live-ping 1.6s var(--ease-svr) infinite;
+  }
+}
+
+/* ─── REDUCED MOTION ──────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-reveal {
+    animation: none;
+  }
+  .mouse-depth,
+  .cursor-tilt,
+  .fallback-layer {
+    translate: none !important;
+    transform: none !important;
+  }
+  .tilt-card {
+    transform: none !important;
+  }
+  .lattice-layer {
+    transition-duration: 0.3s;
+  }
+  .flow-track,
+  .live-ping,
+  .scroll-dot {
+    animation: none !important;
+  }
+}
