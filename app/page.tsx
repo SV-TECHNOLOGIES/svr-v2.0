@@ -6,6 +6,7 @@ import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
+import { DigitalMarketingServices } from "@/components/sections/DigitalMarketingServices";
 
 /**
  * Home. Section order follows the lattice story:
@@ -20,6 +21,7 @@ export default function HomePage() {
         <Process />
         <Impact />
         <Services />
+        <DigitalMarketingServices />
         <Testimonials />
         <Contact />
       </main>
