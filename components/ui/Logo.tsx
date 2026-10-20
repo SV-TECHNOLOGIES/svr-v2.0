@@ -84,12 +84,12 @@ export function Logo({
           </span>
 
           <span
-            className={`text-[0.68rem] font-medium tracking-[0.14em] uppercase ${
-              light ? "text-glow" : "text-muted"
-            }`}
-          >
-            Tech Groups
-          </span>
+          className={`font-display text-[1.05rem] font-bold tracking-[-0.02em] ${
+          light ? "text-white" : "text-navy"
+           }`}
+           >
+          TECH GROUPS
+        </span>
         </span>
 
         <span
