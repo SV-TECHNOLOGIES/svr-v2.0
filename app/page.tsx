@@ -5,7 +5,6 @@ import { SelectedWork } from "@/components/sections/SelectedWork";
 import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { Impact } from "@/components/sections/Impact";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { testimonials } from "@/content/site";
