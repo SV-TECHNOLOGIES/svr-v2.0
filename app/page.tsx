@@ -7,8 +7,6 @@ import { Process } from "@/components/sections/Process";
 import { Impact } from "@/components/sections/Impact";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
-import { testimonials } from "@/content/site";
-
 export default function HomePage() {
   return (
     <>
