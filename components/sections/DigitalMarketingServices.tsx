@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import {
   Megaphone,
   Search,
@@ -8,6 +9,7 @@ import {
   Mail,
   ChartNoAxesColumn,
   Star,
+  ArrowRight,
 } from "lucide-react";
 
 const marketingServices = [
@@ -61,12 +63,25 @@ const marketingServices = [
   },
 ];
 
-export function DigitalMarketingServices() {
+type DigitalMarketingServicesProps = {
+  limit?: number;
+  showViewAll?: boolean;
+};
+
+export function DigitalMarketingServices({
+  limit,
+  showViewAll = false,
+}: DigitalMarketingServicesProps) {
+  const visibleServices =
+    limit === undefined
+      ? marketingServices
+      : marketingServices.slice(0, Math.max(0, limit));
+
   return (
     <section
       id="digital-marketing"
       aria-labelledby="digital-marketing-title"
-      className="bg-[#eef4ff] px-5 py-20 sm:px-8 md:py-24"
+      className="bg-[#eef4ff] px-5 py-16 sm:px-8 md:py-20"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
@@ -79,17 +94,17 @@ export function DigitalMarketingServices() {
 
           <p className="mt-5 text-lg leading-relaxed text-slate-600 sm:text-xl">
             At SVR TECH GROUPS, we help businesses grow digitally with
-            comprehensive marketing solutions
+            comprehensive marketing solutions.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
-          {marketingServices.map(({ title, description, Icon }) => (
+        <div className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          {visibleServices.map(({ title, description, Icon }) => (
             <article
               key={title}
-              className="min-h-[250px] rounded-xl bg-white p-7 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="flex min-h-[250px] flex-col rounded-xl bg-white p-7 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="flex h-[58px] w-[58px] items-center justify-center rounded-[11px] bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+              <div className="flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-[11px] bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
                 <Icon size={27} strokeWidth={2} aria-hidden="true" />
               </div>
 
@@ -103,6 +118,18 @@ export function DigitalMarketingServices() {
             </article>
           ))}
         </div>
+
+        {showViewAll && (
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-lg bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"
+            >
+              View All Digital Marketing Services
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

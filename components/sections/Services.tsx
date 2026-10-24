@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import { services } from "@/content/site";
 import { FarLayer } from "@/components/ui/Parallax";
 import { Reveal } from "@/components/ui/Reveal";
@@ -11,7 +12,13 @@ import {
   ChartNoAxesColumn,
   Shield,
   Database,
+  ArrowRight,
 } from "lucide-react";
+
+type ServicesProps = {
+  limit?: number;
+  showViewAll?: boolean;
+};
 
 const additionalServices = [
   {
@@ -55,15 +62,30 @@ const serviceIcons = [
   Database,
 ];
 
-export function Services() {
-  const allServices = [...services.items, ...additionalServices];
+export function Services({
+  limit,
+  showViewAll = false,
+}: ServicesProps) {
+  // Spread readonly JSON-configured items into a normal array.
+  const allServices = [
+    ...services.items.map((service) => ({
+      ...service,
+      tags: [...service.tags],
+    })),
+    ...additionalServices,
+  ];
+
+  const visibleServices =
+    limit === undefined
+      ? allServices
+      : allServices.slice(0, Math.max(0, limit));
 
   return (
     <section
       id="services"
       aria-labelledby="services-title"
       data-lattice-stage="7"
-      className="relative py-28 md:py-40"
+      className="relative py-20 md:py-28"
     >
       <FarLayer
         glows={[
@@ -85,7 +107,7 @@ export function Services() {
       <div
         data-lattice-anchor="services-stage"
         className="pointer-events-none absolute inset-0"
-        aria-hidden
+        aria-hidden="true"
       />
 
       <div className="container-site layer-near">
@@ -104,17 +126,16 @@ export function Services() {
         </Reveal>
 
         <Reveal
-          as="ul"
-          className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-20 lg:grid-cols-3"
-          stagger={0.1}
-        >
-          {allServices.map((s, i) => {
+            as="ul"
+            className="mt-12 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4"
+            stagger={0.1}
+          >
+          {visibleServices.map((service, i) => {
             const Icon = serviceIcons[i % serviceIcons.length];
 
             return (
-              <li key={`${s.title}-${i}`} className="h-full">
+              <li key={`${service.title}-${i}`} className="h-full">
                 <TiltCard className="ring-primary/10 flex h-full flex-col overflow-hidden rounded-xl bg-white ring-1 shadow-lg">
-                  {/* Service logo */}
                   <div className="flex justify-center pt-6">
                     <div className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
                       <Icon
@@ -126,24 +147,23 @@ export function Services() {
                     </div>
                   </div>
 
-                  {/* Existing service card content */}
                   <div
                     className="glass-fill flex flex-1 flex-col p-6"
                     style={{ transformStyle: "preserve-3d" }}
                   >
                     <h3 className="depth-1 font-display text-h3 text-navy text-center font-semibold">
-                      {s.title}
+                      {service.title}
                     </h3>
 
                     <p className="depth-1 text-muted mt-4 text-center text-[0.9375rem] leading-relaxed">
-                      {s.body}
+                      {service.body}
                     </p>
 
                     <ul
                       className="depth-2 mt-5 flex flex-1 flex-col gap-2.5"
-                      aria-label={`${s.title} capabilities`}
+                      aria-label={`${service.title} capabilities`}
                     >
-                      {s.tags.map((tag) => (
+                      {service.tags.map((tag) => (
                         <li
                           key={tag}
                           className="flex items-center gap-2 text-sm text-slate-700"
@@ -175,24 +195,11 @@ export function Services() {
                     </ul>
 
                     <a
-                      href="#contact"
+                      href="/#contact"
                       className="mt-7 inline-flex items-center justify-center gap-3 rounded-lg border border-slate-200 px-5 py-3 text-sm font-medium text-slate-900 transition-colors hover:border-blue-300 hover:bg-blue-50"
                     >
                       Learn More
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="m7 10 5 5 5-5"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <ArrowRight size={16} aria-hidden="true" />
                     </a>
                   </div>
                 </TiltCard>
@@ -200,6 +207,18 @@ export function Services() {
             );
           })}
         </Reveal>
+
+        {showViewAll && (
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+            >
+              View All Services
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

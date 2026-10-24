@@ -11,7 +11,7 @@
  * Reduced motion: no pinning — all five steps are listed, and a still,
  * assembled lattice sits beside them.
  */
-
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { howWeBuild as process } from "@/content/site";
@@ -26,10 +26,128 @@ import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 const steps = process.steps;
 const COUNT = steps.length;
 
-export function Process() {
+type ProcessProps = {
+  compact?: boolean;
+  showViewAll?: boolean;
+};
+
+export function Process({
+  compact = false,
+  showViewAll = false,
+}: ProcessProps) {
+  if (compact) {
+    return <ProcessCompact showViewAll={showViewAll} />;
+  }
+
   const reduced = usePrefersReducedMotion();
+
   return reduced ? <ProcessStatic /> : <ProcessPinned />;
 }
+
+
+
+function ProcessCompact({
+  showViewAll,
+}: {
+  showViewAll: boolean;
+}) {
+  return (
+    <section
+      id="process"
+      aria-labelledby="process-title"
+      data-lattice-stage="1-5"
+      className="relative overflow-hidden py-16 md:py-20"
+    >
+      <FarLayer
+        glows={[
+          {
+            x: "75%",
+            y: "30%",
+            size: 700,
+            color: "rgb(59 130 246 / 0.10)",
+          },
+        ]}
+      />
+
+      <div className="container-site layer-near">
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow">{process.eyebrow}</p>
+
+            <h2
+              id="process-title"
+              className="font-display text-h2 text-navy mt-3 font-semibold"
+            >
+              {process.title}
+            </h2>
+
+            <p className="text-muted mx-auto mt-4 max-w-2xl leading-relaxed">
+              {process.intro}
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal
+          as="ol"
+          stagger={0.08}
+          className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+        >
+          {steps.map((step, index) => (
+            <li
+              key={step.number}
+              className="relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-sm"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-100 font-display text-lg font-bold text-blue-700">
+                {step.number}
+              </div>
+
+              <h3 className="font-display mt-4 text-lg font-semibold text-navy">
+                {step.title}
+              </h3>
+
+              <p className="text-muted mt-2 text-sm leading-relaxed">
+                {step.body}
+              </p>
+
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {step.points.map((point) => (
+                  <li
+                    key={point}
+                    className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-slate-700"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              {index < steps.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-3 top-8 z-10 hidden text-xl text-blue-400 lg:block"
+                >
+                  →
+                </span>
+              )}
+            </li>
+          ))}
+        </Reveal>
+
+        {showViewAll && (
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/process"
+              className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+            >
+              View Full Process
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 
 function ProcessPinned() {
   const sectionRef = useRef<HTMLElement>(null);

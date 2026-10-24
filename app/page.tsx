@@ -18,10 +18,18 @@ export default function HomePage() {
       <main id="main" tabIndex={-1}>
         <Hero />
         <SelectedWork />
-        <Services />
-        <Process />
+
+        {/* Four featured services with a link to the full Services page */}
+        <Services limit={4} showViewAll />
+
+        {/* Compact workflow preview with all steps visible */}
+        <Process compact showViewAll />
+
         <Impact />
-        <DigitalMarketingServices />
+
+        {/* Four featured marketing services with a link to all offerings */}
+        <DigitalMarketingServices limit={4} showViewAll />
+
         <Testimonials />
         <Contact />
       </main>
