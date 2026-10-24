@@ -1,7 +1,6 @@
 
 import { Navbar } from "@/components/sections/Navbar";
 import { Services } from "@/components/sections/Services";
-import { DigitalMarketingServices } from "@/components/sections/DigitalMarketingServices";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
@@ -22,15 +21,14 @@ export default function ServicesPage() {
             </h1>
 
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-600 md:text-lg">
-              From custom software and cloud solutions to digital marketing,
-              we help businesses build, grow, and succeed with technology.
+              From custom websites and mobile applications to cloud solutions,
+              data analytics, and cybersecurity, we help businesses build and
+              grow with technology.
             </p>
           </div>
         </section>
 
         <Services />
-
-        <DigitalMarketingServices />
 
         <Contact />
       </main>

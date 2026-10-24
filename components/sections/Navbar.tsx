@@ -101,7 +101,7 @@ export function Navbar() {
       >
         <nav
           aria-label="Primary"
-          className={`container-site ease-svr flex items-center justify-between transition-[height] duration-700 ${
+          className={`mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 lg:px-10 xl:px-14 ease-svr transition-[height] duration-700 ${
             scrolled ? "h-16" : "h-20"
           }`}
         >
@@ -130,7 +130,7 @@ export function Navbar() {
                     href={l.href}
                     onClick={(e) => go(e, l.href)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`ease-svr relative rounded-full px-3.5 py-2 text-[0.9375rem] font-medium transition-colors duration-500 ${
+                    className={`ease-svr relative rounded-full px-2 py-2 text-[0.9375rem] font-medium transition-colors duration-500 ${
                       isActive ? "text-primary font-semibold" : "text-ink/80 hover:text-navy"
                     }`}
                   >

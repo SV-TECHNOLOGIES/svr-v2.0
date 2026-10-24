@@ -41,18 +41,21 @@
       }
     ]
   },
-  "nav": {
-    "links": [
-      { "label": "Home", "href": "/" },
-      { "label": "Projects", "href": "/portfolio" },
-      { "label": "About Us", "href": "/team" },
-      { "label": "Contact", "href": "/#contact" }
-    ],
-    "cta": {
-      "label": "Start a Project",
-      "href": "/#contact"
-    }
-  },
+    "nav": {
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "Projects", "href": "/portfolio" },
+        { "label": "About Us", "href": "/team" },
+        { "label": "Services", "href": "/services" },
+        { "label": "Digital Marketing Services", "href": "/digital-marketing" },
+        { "label": "How We Build", "href": "/process" },
+        { "label": "Contact", "href": "/#contact" }
+      ],
+      "cta": {
+        "label": "Start a Project",
+        "href": "/#contact"
+      }
+    },
   "hero": {
     "primaryCta": {
       "label": "Start a Project",
