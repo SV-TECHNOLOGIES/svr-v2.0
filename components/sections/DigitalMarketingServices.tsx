@@ -81,9 +81,9 @@ export function DigitalMarketingServices({
     <section
       id="digital-marketing"
       aria-labelledby="digital-marketing-title"
-      className="bg-[#eef4ff] px-5 py-16 sm:px-8 md:py-20"
+      className="relative isolate z-10 bg-[#eef4ff]/85 px-5 py-16 sm:px-8 md:py-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <h2
             id="digital-marketing-title"
@@ -102,7 +102,7 @@ export function DigitalMarketingServices({
           {visibleServices.map(({ title, description, Icon }) => (
             <article
               key={title}
-              className="flex min-h-[250px] flex-col rounded-xl bg-white p-7 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="relative z-10 flex min-h-[250px] flex-col rounded-xl border border-slate-200/80 bg-white/90 p-7 shadow-md backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-[11px] bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
                 <Icon size={27} strokeWidth={2} aria-hidden="true" />
@@ -120,7 +120,7 @@ export function DigitalMarketingServices({
         </div>
 
         {showViewAll && (
-          <div className="mt-10 flex justify-center">
+          <div className="relative z-10 mt-10 flex justify-center">
             <Link
               href="/services"
               className="inline-flex items-center gap-2 rounded-lg bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-800"

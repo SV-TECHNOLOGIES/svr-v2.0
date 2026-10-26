@@ -23,33 +23,33 @@ type ServicesProps = {
 const additionalServices = [
   {
     title: "Web Development",
-    body: "Custom web applications built with modern technologies to deliver fast, responsive, and engaging digital experiences.",
-    tags: ["React / Next.js", "Node.js", "Full-stack", "Responsive Design"],
+    body: "Fast, responsive websites and web applications.",
+    tags: ["React / Next.js", "Node.js", "Full-stack"],
   },
   {
     title: "Cloud Solutions",
-    body: "Scalable cloud infrastructure and migration services to improve performance, flexibility, and cost efficiency.",
-    tags: ["AWS / Azure", "Serverless", "Auto-scaling", "Cost Optimization"],
+    body: "Scalable cloud infrastructure built for growth.",
+    tags: ["AWS / Azure", "Serverless", "Auto-scaling"],
   },
   {
     title: "Mobile Development",
-    body: "Native and cross-platform mobile applications designed to provide seamless experiences across devices.",
-    tags: ["iOS & Android", "React Native", "Flutter", "App Store Deployment"],
+    body: "Mobile apps for seamless experiences across devices.",
+    tags: ["iOS & Android", "React Native", "Flutter"],
   },
   {
     title: "Data Analytics",
-    body: "Business intelligence and data visualization solutions that turn your data into actionable insights.",
-    tags: ["Data Warehousing", "Real-time Analytics", "Custom Dashboards", "ML Integration"],
+    body: "Turn business data into actionable insights.",
+    tags: ["Data Warehousing", "Analytics", "Dashboards"],
   },
   {
     title: "Cybersecurity",
-    body: "Comprehensive security solutions and auditing to help protect your systems, applications, and business data.",
-    tags: ["Security Audits", "Penetration Testing", "Compliance", "Incident Response"],
+    body: "Protect your applications, systems, and data.",
+    tags: ["Security Audits", "Penetration Testing", "Compliance"],
   },
   {
     title: "Database Management",
-    body: "Database design, optimization, and management to keep your data secure, reliable, and accessible.",
-    tags: ["Database Design", "Performance Tuning", "Backup Strategies", "Migration Services"],
+    body: "Secure, reliable, and optimized data management.",
+    tags: ["Database Design", "Performance Tuning", "Migration"],
   },
 ];
 
@@ -66,7 +66,6 @@ export function Services({
   limit,
   showViewAll = false,
 }: ServicesProps) {
-  // Spread readonly JSON-configured items into a normal array.
   const allServices = [
     ...services.items.map((service) => ({
       ...service,
@@ -85,7 +84,7 @@ export function Services({
       id="services"
       aria-labelledby="services-title"
       data-lattice-stage="7"
-      className="relative py-20 md:py-28"
+      className="relative py-16 md:py-24"
     >
       <FarLayer
         glows={[
@@ -111,7 +110,7 @@ export function Services({
       />
 
       <div className="container-site layer-near">
-        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <SectionHeading
               eyebrow={services.eyebrow}
@@ -126,20 +125,20 @@ export function Services({
         </Reveal>
 
         <Reveal
-            as="ul"
-            className="mt-12 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4"
-            stagger={0.1}
-          >
+          as="ul"
+          className="mt-10 grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          stagger={0.1}
+        >
           {visibleServices.map((service, i) => {
             const Icon = serviceIcons[i % serviceIcons.length];
 
             return (
               <li key={`${service.title}-${i}`} className="h-full">
-                <TiltCard className="ring-primary/10 flex h-full flex-col overflow-hidden rounded-xl bg-white ring-1 shadow-lg">
-                  <div className="flex justify-center pt-6">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
+                <TiltCard className="ring-primary/10 flex h-full flex-col overflow-hidden rounded-xl bg-white/90 ring-1 shadow-md backdrop-blur-sm">
+                  <div className="flex justify-center pt-5">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
                       <Icon
-                        size={38}
+                        size={32}
                         strokeWidth={2}
                         className="text-blue-600"
                         aria-hidden="true"
@@ -148,19 +147,19 @@ export function Services({
                   </div>
 
                   <div
-                    className="glass-fill flex flex-1 flex-col p-6"
+                    className="glass-fill flex flex-1 flex-col p-5"
                     style={{ transformStyle: "preserve-3d" }}
                   >
                     <h3 className="depth-1 font-display text-h3 text-navy text-center font-semibold">
                       {service.title}
                     </h3>
 
-                    <p className="depth-1 text-muted mt-4 text-center text-[0.9375rem] leading-relaxed">
+                    <p className="depth-1 text-muted mt-3 text-center text-sm leading-relaxed">
                       {service.body}
                     </p>
 
                     <ul
-                      className="depth-2 mt-5 flex flex-1 flex-col gap-2.5"
+                      className="depth-2 mt-4 flex flex-1 flex-col gap-2"
                       aria-label={`${service.title} capabilities`}
                     >
                       {service.tags.map((tag) => (
@@ -171,7 +170,7 @@ export function Services({
                           <svg
                             viewBox="0 0 24 24"
                             fill="none"
-                            className="h-5 w-5 shrink-0 text-green-500"
+                            className="h-4 w-4 shrink-0 text-green-500"
                             aria-hidden="true"
                           >
                             <circle
@@ -193,14 +192,6 @@ export function Services({
                         </li>
                       ))}
                     </ul>
-
-                    <a
-                      href="/#contact"
-                      className="mt-7 inline-flex items-center justify-center gap-3 rounded-lg border border-slate-200 px-5 py-3 text-sm font-medium text-slate-900 transition-colors hover:border-blue-300 hover:bg-blue-50"
-                    >
-                      Learn More
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </a>
                   </div>
                 </TiltCard>
               </li>
@@ -209,7 +200,7 @@ export function Services({
         </Reveal>
 
         {showViewAll && (
-          <div className="mt-10 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <Link
               href="/services"
               className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
