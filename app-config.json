@@ -257,73 +257,235 @@
       }
     ]
   },
+
   "team": {
     "eyebrow": "Our Team",
-    "title": "Senior builders, systems architects, and AI practitioners.",
-    "intro": "We do not hand your project off to junior subcontractors. Our core studio team consists of seasoned engineers who design, code, and take end-to-end accountability for every line that ships.",
+    "title": "A multidisciplinary team building digital solutions.",
+    "intro": "Our team brings together expertise in software engineering, AI, project management, human resources, and digital marketing. We combine technical knowledge, thoughtful planning, and creative problem-solving to turn ideas into reliable digital solutions and support sustainable business growth.",
     "values": [
-      { "title": "Engineers Own Decisions", "description": "No account managers playing telephone. You collaborate directly with the senior engineers designing your system." },
-      { "title": "AI Velocity, Human Verification", "description": "We leverage AI tooling to accelerate drafting and testing, but human architects review every line and edge case." },
-      { "title": "Zero Black-Box Delivery", "description": "Public sprint boards, weekly production demos, and clean git history from day one." }
+      {
+        "title": "Expertise With Ownership",
+        "description": "Work directly with the people responsible for planning, building, and delivering your project. Our team values clear communication, shared responsibility, and practical decision-making."
+      },
+      {
+        "title": "AI With Human Oversight",
+        "description": "We use AI tools where they add value and apply human review to help ensure that solutions are useful, reliable, and appropriate for their intended purpose."
+      },
+      {
+        "title": "Transparent Collaboration",
+        "description": "We value clear project updates, regular progress reviews, and organized delivery practices so everyone understands the work, priorities, and next steps."
+      }
     ],
     "members": [
       {
-        "id": "team-venkat",
-        "name": "Venkat R.",
-        "role": "Founder & Technical Director",
+        "id": "team-sachin-palthya",
+        "name": "Sachin Palthya",
+        "role": "Founder & Chief Executive Officer (CEO)",
         "focus": "System Architecture & AI Engineering",
-        "experience": "12+ Years",
-        "bio": "Specializes in high-concurrency cloud distributed systems, autonomous agentic workflows, and high-performance WebGL & Next.js applications.",
-        "impact": "Architected systems processing over 100M+ monthly transactions; spearheaded AI agent deployments for enterprise fintech and logistics.",
-        "skills": ["Distributed Systems", "LLM Orchestration", "Next.js", "Go", "Cloud Architecture"],
+        "experience": "2+ years",
+        "bio": "A technology-driven entrepreneur with a strong software development background and a Master’s degree in Software Development. As Founder and CEO of SVR TECH GROUPS, Sachin combines technical expertise with strategic leadership to build innovative, scalable, and secure digital solutions. He focuses on web and mobile application development, AI-powered automation, and modern software engineering, leading projects from concept to deployment while driving innovation, client success, and sustainable business growth.",
+        "impact": "Leads the vision, technology strategy, and project delivery at SVR TECH GROUPS, transforming business ideas into practical digital solutions through modern technologies, collaborative development, and customer-focused innovation.",
+        "skills": [
+          "Software Development",
+          "Full-Stack Development",
+          "Web Applications",
+          "AI & Automation",
+          "Technical Leadership",
+          "Project Management",
+          "Digital Transformation"
+        ],
         "social": {
-          "linkedin": "https://www.linkedin.com/company/svr-tech-groups/",
-          "email": "svrtechgroups@gmail.com"
+          "linkedin": "http://www.linkedin.com/in/sachin-palthya-07466a319",
+          "email": "sachinpalthya@svrtechgroups.com"
+        }
+      },
+
+{
+  "name": "Venkatesh Lingampally",
+  "displayName": "Venkatesh Lingampally",
+  "role": "Co-Founder & Chief Technology Officer (CTO)",
+  "department": "Technology & Engineering Department",
+  "bio": "Co-Founder and Chief Technology Officer responsible for guiding technology strategy, overseeing engineering initiatives, and supporting the development of reliable, scalable digital solutions. Focused on aligning technical decisions with business goals, encouraging innovation, and building a strong foundation for long-term growth.",
+  "focus": [
+    "Technology strategy",
+    "Software architecture",
+    "Engineering leadership",
+    "Technical planning",
+    "System scalability",
+    "Development processes",
+    "Technology-driven problem-solving"
+  ],
+  "experience": "2+ years",
+  "impact": "Contributes to defining the company’s technical direction, aligning engineering priorities with business objectives, and establishing a foundation for maintainable and scalable digital products. Focuses on improving development practices, supporting effective technical decision-making, and enabling sustainable technology growth.",
+  "skills": [
+    "Technical leadership",
+    "Technology strategy",
+    "Software architecture",
+    "System design",
+    "Engineering management",
+    "Solution planning",
+    "Scalability",
+    "Technical problem-solving",
+    "Cross-functional collaboration"
+  ],
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/venke%E1%BB%B5dev/",
+    "email": "lingampally.venkey+svr@gmail.com"
+  }
+},
+
+      {
+        "id": "team-bhoomeshwari-lakavath",
+        "name": "Bhoomeshwari Lakavath",
+        "role": "Chairperson & HR Executive Manager",
+        "focus": "Strategic leadership, talent management, and organizational development",
+        "experience": "2+ years",
+        "bio": "As Chairperson and HR Executive Manager at SVR TECH GROUPS, she brings a technology-oriented perspective supported by a master’s degree in computer science. Her work focuses on talent acquisition, team development, recruitment strategies, and human resource management, helping build a collaborative, skilled, and growth-oriented workforce.",
+        "impact": "Supports organizational growth by strengthening recruitment processes, coordinating talent acquisition, encouraging team collaboration, and fostering a positive workplace culture aligned with SVR TECH GROUPS’ business objectives.",
+        "skills": [
+          "Human Resource Management",
+          "Talent Acquisition",
+          "Recruitment & Selection",
+          "Team Leadership",
+          "Employee Engagement",
+          "Organisational Development",
+          "Strategic Planning",
+          "Computer Science"
+        ],
+        "social": {
+          "linkedin": "https://www.linkedin.com/in/bhoomeshwari-lakavath-8a5554265",
+          "email": "lakavathb939838@gmail.com"
         }
       },
       {
-        "id": "team-suresh",
-        "name": "Suresh Kumar",
-        "role": "Lead Mobile & Full-Stack Architect",
-        "focus": "Cross-Platform Mobile & Offline Sync",
-        "experience": "9+ Years",
-        "bio": "Expert in React Native, offline-first sync engines, native iOS/Android bridge modules, and fluid micro-interaction design.",
-        "impact": "Shipped 15+ top-rated mobile applications with combined 2M+ active downloads across App Store and Google Play.",
-        "skills": ["React Native", "TypeScript", "Swift", "Kotlin", "SQLite / WatermelonDB"],
+        "id": "team-manish-panyala",
+        "name": "Manish Panyala",
+        "role": "Full Stack Developer",
+        "focus": "Full-stack web development, artificial intelligence and machine learning (AI/ML), intelligent application development, responsive UI/UX design, API integration, database management, and scalable digital solutions.",
+        "experience": "2+ years",
+        "bio": "A Full Stack Developer specializing in building modern, responsive, and scalable web applications. Focused on frontend and backend development, API integration, and database management, with an emphasis on clean code, application performance, and reliable digital solutions that meet business requirements.",
+        "impact": "Focused on developing scalable web applications and intelligent AI/ML solutions that improve efficiency, enhance user experiences, and address real-world business challenges. Committed to delivering reliable digital products through effective problem-solving, clean code, and continuous innovation.",
+        "skills": [
+          "Full-Stack Development",
+          "React.js",
+          "Next.js",
+          "JavaScript",
+          "TypeScript",
+          "Node.js",
+          "HTML5",
+          "CSS3",
+          "Tailwind CSS",
+          "REST APIs",
+          "Database Management",
+          "Python",
+          "Artificial Intelligence (AI)",
+          "Machine Learning (ML)",
+          "Generative AI",
+          "Git",
+          "GitHub",
+          "Responsive Web Design",
+          "Performance Optimization"
+        ],
         "social": {
-          "linkedin": "https://www.linkedin.com/company/svr-tech-groups/",
-          "email": "svrtechgroups@gmail.com"
+          "linkedin": "https://www.linkedin.com/in/manish-panyala-719248293",
+          "email": "manishpanyala123@gmail.com"
         }
       },
       {
-        "id": "team-ananya",
-        "name": "Ananya Sen",
-        "role": "Principal AI & Data Engineer",
-        "focus": "RAG Pipelines & Multi-Agent Workflows",
-        "experience": "7+ Years",
-        "bio": "Deep background in natural language processing, vector retrieval evaluation, tool calling protocols, and production LLM latency optimization.",
-        "impact": "Engineered autonomous contract parsing and voice AI engines cutting operational manual review time by 75%+.",
-        "skills": ["LangGraph", "Python / FastAPI", "Claude & OpenAI API", "Vector Embeddings", "Qdrant"],
+        "id": "team-pooja-shamantha",
+        "name": "Pooja Shamantha",
+        "role": "Project Management Professional",
+        "focus": "Project planning and execution, delivery management, team coordination, stakeholder communication, timeline tracking, risk management, resource allocation, and process improvement.",
+        "experience": "2+ years",
+        "bio": "A Project Management professional focused on project planning, coordination, delivery management, and stakeholder communication. Committed to ensuring smooth project execution, meeting deadlines, managing resources effectively, and aligning project outcomes with business objectives.",
+        "impact": "Focused on supporting successful project delivery through effective coordination, structured planning, progress monitoring, and proactive problem-solving. Aims to improve team collaboration, maintain project timelines, and ensure deliverables meet quality standards and business requirements.",
+        "skills": [
+          "Project Planning",
+          "Delivery Management",
+          "Task Tracking",
+          "Team Coordination",
+          "Stakeholder Communication",
+          "Risk and Issue Management",
+          "Resource Allocation",
+          "Agile and Scrum Methodologies",
+          "Project Documentation",
+          "Reporting",
+          "Microsoft Excel",
+          "PowerPoint",
+          "Jira",
+          "Trello",
+          "Asana",
+          "Time Management",
+          "Problem-Solving"
+        ],
         "social": {
-          "linkedin": "https://www.linkedin.com/company/svr-tech-groups/",
-          "email": "svrtechgroups@gmail.com"
+          "linkedin": "https://www.linkedin.com/in/poojasham",
+          "email": "shamanthapooja2001@gmail.com"
         }
       },
       {
-        "id": "team-rohit",
-        "name": "Rohit Varma",
-        "role": "Senior Frontend & Interaction Engineer",
-        "focus": "Design Systems & 3D Web Experiences",
-        "experience": "6+ Years",
-        "bio": "Passionate about micro-animations, accessible design systems, Three.js/WebGL creative engineering, and sub-second web performance.",
-        "impact": "Maintained 100/100 Lighthouse performance and accessibility benchmarks across all client web launches.",
-        "skills": ["Three.js / R3F", "Tailwind CSS", "Framer Motion", "GSAP", "Web Performance"],
-        "social": {
-          "linkedin": "https://www.linkedin.com/company/svr-tech-groups/"
-        }
+        "id": "team-sandeep-lvs",
+        "name": "Sandeep LVS",
+        "role": "Full Stack Developer",
+        "focus": "Full-stack web development, frontend and backend engineering, responsive UI/UX design, API development and integration, database management, application performance optimization, cloud-based solutions, and scalable software development.",
+        "experience": "2+ years",
+        "bio": "A Full Stack Developer focused on building modern, responsive, and scalable web applications, with an emphasis on frontend and backend development, API integration, database management, and delivering reliable digital solutions that meet business requirements.",
+        "impact": "Focused on developing efficient and user-friendly web applications that support business objectives, improve digital experiences, and streamline workflows through effective problem-solving, clean coding practices, and performance optimization.",
+        "skills": [
+          "Full-Stack Development",
+          "React.js",
+          "Next.js",
+          "JavaScript",
+          "TypeScript",
+          "Node.js",
+          "HTML5",
+          "CSS3",
+          "Tailwind CSS",
+          "REST APIs",
+          "Database Management",
+          "Python",
+          "Git",
+          "GitHub",
+          "Responsive Web Design",
+          "Debugging",
+          "Application Optimization",
+          "Software Development"
+        ],
+        "social": {}
+      },
+      {
+        "id": "team-mounika",
+        "name": "Mounika",
+        "role": "Digital Marketing Professional",
+        "focus": "Digital marketing strategy, social media marketing, search engine optimization (SEO), search engine marketing (SEM), content marketing, brand development, lead generation, audience engagement, campaign management, and marketing analytics.",
+        "experience": "2+ years",
+        "bio": "A Digital Marketing professional focused on building brand awareness, strengthening online presence, and driving audience engagement through effective digital strategies and marketing campaigns. Committed to supporting business growth through creative content, data-driven decision-making, and continuous optimization of marketing performance.",
+        "impact": "Focused on enhancing digital visibility, reaching target audiences, generating potential leads, and supporting business growth through strategic marketing initiatives, engaging content, and performance-driven campaign optimization.",
+        "skills": [
+          "Digital Marketing",
+          "Social Media Management",
+          "SEO",
+          "SEM",
+          "Content Marketing",
+          "Brand Management",
+          "Lead Generation",
+          "Email Marketing",
+          "Google Analytics",
+          "Google Ads",
+          "Meta Ads",
+          "Keyword Research",
+          "Marketing Analytics",
+          "Campaign Planning",
+          "Content Strategy",
+          "Audience Targeting",
+          "Performance Reporting"
+        ],
+        "social": {}
       }
     ]
   },
+
+
   "testimonials": {
     "enabled": false,
     "viewMore": {
