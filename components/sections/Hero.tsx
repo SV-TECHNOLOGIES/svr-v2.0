@@ -20,7 +20,7 @@ export function Hero() {
     <section
       id="top"
       aria-labelledby="hero-title"
-      data-lattice-stage="0"
+      
       className="relative flex min-h-[100svh] items-center pt-24 pb-20 md:pt-28"
     >
       {/* far layer */}
@@ -36,9 +36,6 @@ export function Hero() {
       <div className="container-site layer-near grid w-full grid-cols-1 items-center gap-10 md:grid-cols-12">
         {/* near layer: copy */}
         <div className="md:col-span-7 lg:col-span-7">
-          <p className="eyebrow hero-reveal" style={delay()}>
-            {hero.eyebrow}
-          </p>
           <h1 id="hero-title" className="font-display text-display text-navy mt-6 font-semibold">
             {hero.headline.map((parts, i) => (
               <span key={i} className="hero-reveal block text-balance" style={delay()}>

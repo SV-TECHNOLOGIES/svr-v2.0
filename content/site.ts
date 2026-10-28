@@ -253,12 +253,15 @@ const dynamicTestimonials: TestimonialItem[] = Array.from({ length: testimonialT
   };
 }).filter((t) => Boolean(t.quote || t.name));
 
+
 export const testimonials = {
-  eyebrow: "Testimonials",
+  enabled: appConfig.testimonials?.enabled ?? false,
+  eyebrow: strings.testimonials?.title ?? "Testimonials",
   title: strings.testimonials?.title ?? "Testimonials",
   viewMore: appConfig.testimonials?.viewMore,
   items: dynamicTestimonials,
 } as const;
+
 
 // ─── CONTACT (DYNAMIC BUDGETS & PROJECT TYPES) ───────────────────────────────
 const rawConfigBudgets = Array.isArray(appConfig.contact?.budgets) ? appConfig.contact.budgets : [];

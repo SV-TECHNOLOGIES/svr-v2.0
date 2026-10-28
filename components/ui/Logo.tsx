@@ -1,3 +1,4 @@
+
 /**
  * Logo. Uses the real logo when `site.logo.src` is set (see content/site.ts),
  * otherwise a placeholder: a three-node lattice mark + wordmark.
@@ -58,20 +59,45 @@ export function Logo({
       />
     );
   }
+
   const light = tone === "light";
+
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark className="h-8 w-8 shrink-0" tone={tone} />
+      <Image
+        src="/logo/logo.png"
+        alt="SVR Tech Groups"
+        width={32}
+        height={32}
+        priority
+        className="h-8 w-8 shrink-0 object-contain"
+      />
+
       <span className="flex flex-col leading-none">
-        <span
-          className={`font-display text-[1.05rem] font-bold tracking-[-0.02em] ${light ? "text-white" : "text-navy"}`}
-        >
-          SVR
+        <span className="flex flex-row items-center gap-2 leading-none">
+          <span
+            className={`font-display text-[1.05rem] font-bold tracking-[-0.02em] ${
+              light ? "text-white" : "text-navy"
+            }`}
+          >
+            SVR
+          </span>
+
+          <span
+          className={`font-display text-[1.05rem] font-bold tracking-[-0.02em] ${
+          light ? "text-white" : "text-navy"
+           }`}
+           >
+          TECH GROUPS
         </span>
+        </span>
+
         <span
-          className={`mt-0.5 text-[0.68rem] font-medium tracking-[0.14em] uppercase ${light ? "text-glow" : "text-muted"}`}
+          className={`mt-1 text-[0.55rem] font-medium tracking-[0.16em] uppercase ${
+            light ? "text-glow" : "text-muted"
+          }`}
         >
-          Tech Groups
+          Software Company
         </span>
       </span>
     </span>
