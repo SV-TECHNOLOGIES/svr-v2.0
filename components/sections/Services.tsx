@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { services } from "@/content/site";
 import { FarLayer } from "@/components/ui/Parallax";
@@ -53,19 +52,9 @@ const additionalServices = [
   },
 ];
 
-const serviceIcons = [
-  Code,
-  Cloud,
-  Smartphone,
-  ChartNoAxesColumn,
-  Shield,
-  Database,
-];
+const serviceIcons = [Code, Cloud, Smartphone, ChartNoAxesColumn, Shield, Database];
 
-export function Services({
-  limit,
-  showViewAll = false,
-}: ServicesProps) {
+export function Services({ limit, showViewAll = false }: ServicesProps) {
   const allServices = [
     ...services.items.map((service) => ({
       ...service,
@@ -74,10 +63,11 @@ export function Services({
     ...additionalServices,
   ];
 
+  // The home page shows a short preview: icon, title, and a few keywords.
+  const compact = limit !== undefined;
+
   const visibleServices =
-    limit === undefined
-      ? allServices
-      : allServices.slice(0, Math.max(0, limit));
+    limit === undefined ? allServices : allServices.slice(0, Math.max(0, limit));
 
   return (
     <section
@@ -110,19 +100,17 @@ export function Services({
       />
 
       <div className="container-site layer-near">
-        <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <SectionHeading
-              eyebrow={services.eyebrow}
-              title={services.title}
-              id="services-title"
-            />
-          </div>
+        <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-12">
+          <Reveal className="md:col-span-7">
+            <SectionHeading eyebrow={services.eyebrow} title={services.title} id="services-title" />
+            {!compact && <p className="text-lead text-muted mt-5 max-w-[44ch]">{services.intro}</p>}
+          </Reveal>
 
-          <p className="text-lead text-muted max-w-[36ch] md:text-right">
-            {services.intro}
-          </p>
-        </Reveal>
+          {/* Empty stage for the lattice: a floating cluster sits here, clear of the text. */}
+          <div className="relative h-44 md:col-span-5 md:h-72" aria-hidden="true">
+            <div data-lattice-anchor="services-cluster" className="absolute inset-0" />
+          </div>
+        </div>
 
         <Reveal
           as="ul"
@@ -134,7 +122,7 @@ export function Services({
 
             return (
               <li key={`${service.title}-${i}`} className="h-full">
-                <TiltCard className="ring-primary/10 flex h-full flex-col overflow-hidden rounded-xl bg-white/90 ring-1 shadow-md backdrop-blur-sm">
+                <TiltCard className="ring-primary/10 flex h-full flex-col overflow-hidden rounded-xl bg-white/90 shadow-md ring-1 backdrop-blur-sm">
                   <div className="flex justify-center pt-5">
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100">
                       <Icon
@@ -154,44 +142,62 @@ export function Services({
                       {service.title}
                     </h3>
 
-                    <p className="depth-1 text-muted mt-3 text-center text-sm leading-relaxed">
-                      {service.body}
-                    </p>
-
-                    <ul
-                      className="depth-2 mt-4 flex flex-1 flex-col gap-2"
-                      aria-label={`${service.title} capabilities`}
-                    >
-                      {service.tags.map((tag) => (
-                        <li
-                          key={tag}
-                          className="flex items-center gap-2 text-sm text-slate-700"
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            className="h-4 w-4 shrink-0 text-green-500"
-                            aria-hidden="true"
+                    {compact ? (
+                      <ul
+                        className="depth-2 mt-4 flex flex-wrap justify-center gap-2"
+                        aria-label={`${service.title} capabilities`}
+                      >
+                        {service.tags.slice(0, 3).map((tag) => (
+                          <li
+                            key={tag}
+                            className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-slate-700"
                           >
-                            <circle
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="1.8"
-                            />
-                            <path
-                              d="m8 12 2.5 2.5L16 9"
-                              stroke="currentColor"
-                              strokeWidth="1.8"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <>
+                        <p className="depth-1 text-muted mt-3 text-center text-sm leading-relaxed">
+                          {service.body}
+                        </p>
+
+                        <ul
+                          className="depth-2 mt-4 flex flex-1 flex-col gap-2"
+                          aria-label={`${service.title} capabilities`}
+                        >
+                          {service.tags.map((tag) => (
+                            <li
+                              key={tag}
+                              className="flex items-center gap-2 text-sm text-slate-700"
+                            >
+                              <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                className="h-4 w-4 shrink-0 text-green-500"
+                                aria-hidden="true"
+                              >
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  stroke="currentColor"
+                                  strokeWidth="1.8"
+                                />
+                                <path
+                                  d="m8 12 2.5 2.5L16 9"
+                                  stroke="currentColor"
+                                  strokeWidth="1.8"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                              {tag}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
                   </div>
                 </TiltCard>
               </li>
@@ -203,7 +209,7 @@ export function Services({
           <div className="mt-8 flex justify-center">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+              className="bg-navy inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
             >
               View All Services
               <ArrowRight size={16} aria-hidden="true" />

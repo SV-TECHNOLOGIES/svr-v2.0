@@ -397,6 +397,11 @@ export default function LatticeScene({ quality, reduced }: Props) {
     haloGeometry.attributes.aAlpha.needsUpdate = true;
 
     // ── connection lines ──
+    // When the two states live on different page anchors, nodes travel far
+    // between them: fade the lines mid-flight so they read as drifting dots
+    // instead of a tangle of long strokes.
+    const sameAnchor = A.groups[0]?.anchor === B.groups[0]?.anchor;
+    const lineFade = sameAnchor ? 1 : Math.abs(1 - 2 * fe) ** 2;
     const iStart = edgeGeometry.attributes.iStart.array as Float32Array;
     const iEnd = edgeGeometry.attributes.iEnd.array as Float32Array;
     const iAlpha = edgeGeometry.attributes.iAlpha.array as Float32Array;
@@ -414,6 +419,7 @@ export default function LatticeScene({ quality, reduced }: Props) {
         draw =
           s <= STAGE.discover ? 0 : clamp((s - STAGE.discover) * 1.8 - model.edgeOrder[e] * 0.8);
       }
+      alpha *= lineFade;
       if (alpha < 0.002) alpha = 0;
       iAlpha[e] = alpha;
       iDraw[e] = draw;

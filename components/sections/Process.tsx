@@ -31,26 +31,17 @@ type ProcessProps = {
   showViewAll?: boolean;
 };
 
-export function Process({
-  compact = false,
-  showViewAll = false,
-}: ProcessProps) {
+export function Process({ compact = false, showViewAll = false }: ProcessProps) {
+  const reduced = usePrefersReducedMotion();
+
   if (compact) {
     return <ProcessCompact showViewAll={showViewAll} />;
   }
 
-  const reduced = usePrefersReducedMotion();
-
   return reduced ? <ProcessStatic /> : <ProcessPinned />;
 }
 
-
-
-function ProcessCompact({
-  showViewAll,
-}: {
-  showViewAll: boolean;
-}) {
+function ProcessCompact({ showViewAll }: { showViewAll: boolean }) {
   return (
     <section
       id="process"
@@ -74,16 +65,9 @@ function ProcessCompact({
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow">{process.eyebrow}</p>
 
-            <h2
-              id="process-title"
-              className="font-display text-h2 text-navy mt-3 font-semibold"
-            >
+            <h2 id="process-title" className="font-display text-h2 text-navy mt-3 font-semibold">
               {process.title}
             </h2>
-
-            <p className="text-muted mx-auto mt-4 max-w-2xl leading-relaxed">
-              {process.intro}
-            </p>
           </div>
         </Reveal>
 
@@ -97,33 +81,18 @@ function ProcessCompact({
               key={step.number}
               className="relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-sm"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-100 font-display text-lg font-bold text-blue-700">
+              <div className="font-display flex h-11 w-11 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-700">
                 {step.number}
               </div>
 
-              <h3 className="font-display mt-4 text-lg font-semibold text-navy">
-                {step.title}
-              </h3>
+              <h3 className="font-display text-navy mt-4 text-lg font-semibold">{step.title}</h3>
 
-              <p className="text-muted mt-2 text-sm leading-relaxed">
-                {step.body}
-              </p>
-
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {step.points.map((point) => (
-                  <li
-                    key={point}
-                    className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-slate-700"
-                  >
-                    {point}
-                  </li>
-                ))}
-              </ul>
+              {step.points[0] && <p className="text-muted mt-1.5 text-sm">{step.points[0]}</p>}
 
               {index < steps.length - 1 && (
                 <span
                   aria-hidden="true"
-                  className="absolute -right-3 top-8 z-10 hidden text-xl text-blue-400 lg:block"
+                  className="absolute top-8 -right-3 z-10 hidden text-xl text-blue-400 lg:block"
                 >
                   →
                 </span>
@@ -136,7 +105,7 @@ function ProcessCompact({
           <div className="mt-8 flex justify-center">
             <Link
               href="/process"
-              className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
+              className="bg-navy inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
             >
               View Full Process
               <span aria-hidden="true">→</span>
@@ -147,7 +116,6 @@ function ProcessCompact({
     </section>
   );
 }
-
 
 function ProcessPinned() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -185,8 +153,6 @@ function ProcessPinned() {
       ref={sectionRef}
       id="process"
       aria-labelledby="process-title"
-      data-lattice-stage="1-5"
-      data-lattice-still="5"
       data-scroll-offset="0"
       className="relative"
       style={{ height: `${COUNT * 100 + 60}svh` }}
@@ -443,13 +409,7 @@ function StageIndicators({ active }: { active: number }) {
 
 function ProcessStatic() {
   return (
-    <section
-      id="process"
-      aria-labelledby="process-title"
-      data-lattice-stage="1-5"
-      data-lattice-still="5"
-      className="relative py-24 md:py-32"
-    >
+    <section id="process" aria-labelledby="process-title" className="relative py-24 md:py-32">
       <FarLayer glows={[{ x: "75%", y: "30%", size: 900 }]} />
       <div className="container-site layer-near grid grid-cols-1 gap-10 md:grid-cols-12">
         <div className="md:col-span-6">
