@@ -16,7 +16,7 @@
  *  4 qa            a scan light sweeps; nodes confirm with a pulse
  *  5 launch        locks tight, glows, and lifts
  *  6 impact        the system expands; four nodes anchor to stat panels
- *  7 services      splits into four icon clusters behind the service cards
+ *  7 services      a floating cluster beside the Services heading
  *  8 testimonials  dims into a calm background constellation
  *  9 contact       one small structure beside the form (assembles on success)
  * 10 footer        faint glowing points on navy
@@ -187,167 +187,6 @@ function nearestPairs(
   }
   return pairs;
 }
-
-type IconShape = { pts: Vec3[]; edges: [number, number][]; scale: number[] };
-
-/** Rectangle outline sampled with n points; corners are always included. */
-function rectLoop(w: number, h: number, n: number, cy = 0): Vec3[] {
-  const corners: [number, number][] = [
-    [-w / 2, h / 2 + cy],
-    [w / 2, h / 2 + cy],
-    [w / 2, -h / 2 + cy],
-    [-w / 2, -h / 2 + cy],
-  ];
-  const sides = [w, h, w, h];
-  const extra = Math.max(0, n - 4);
-  const per = sides.map((s) => Math.floor((extra * s) / (2 * (w + h))));
-  let rem = extra - per.reduce((a, b) => a + b, 0);
-  for (let s = 0; rem > 0; s = (s + 1) % 4, rem--) per[s]++;
-  const pts: Vec3[] = [];
-  for (let s = 0; s < 4; s++) {
-    const [ax, ay] = corners[s];
-    const [bx, by] = corners[(s + 1) % 4];
-    pts.push([ax, ay, 0]);
-    for (let i = 1; i <= per[s]; i++) {
-      const t = i / (per[s] + 1);
-      pts.push([ax + (bx - ax) * t, ay + (by - ay) * t, 0]);
-    }
-  }
-  return pts.slice(0, Math.max(n, 4));
-}
-
-function loopEdges(start: number, n: number): [number, number][] {
-  const e: [number, number][] = [];
-  for (let i = 0; i < n; i++) e.push([start + i, start + ((i + 1) % n)]);
-  return e;
-}
-
-function chainEdges(start: number, n: number): [number, number][] {
-  const e: [number, number][] = [];
-  for (let i = 0; i < n - 1; i++) e.push([start + i, start + i + 1]);
-  return e;
-}
-
-function nearestIndex(pts: Vec3[], range: [number, number], p: Vec3) {
-  let best = range[0];
-  let bestD = Infinity;
-  for (let i = range[0]; i < range[1]; i++) {
-    const d = Math.hypot(pts[i][0] - p[0], pts[i][1] - p[1]);
-    if (d < bestD) {
-      bestD = d;
-      best = i;
-    }
-  }
-  return best;
-}
-
-/** Browser window: outline, address bar line, three dots. */
-function browserIcon(k: number): IconShape {
-  const pts: Vec3[] = [];
-  const scale: number[] = [];
-  const edges: [number, number][] = [];
-  const dots = 3;
-  const rest = k - dots;
-  const bar = Math.max(1, Math.round(rest * 0.18));
-  const perim = rest - bar;
-  const W = 2.5;
-  const H = 1.6;
-  pts.push(...rectLoop(W, H, perim));
-  scale.push(...pts.map(() => 0.85));
-  edges.push(...loopEdges(0, perim));
-  const barY = H / 2 - 0.42;
-  const barStart = pts.length;
-  for (let i = 0; i < bar; i++) {
-    pts.push([-W / 2 + ((i + 1) * W) / (bar + 1), barY, 0]);
-    scale.push(0.6);
-  }
-  edges.push(...chainEdges(barStart, bar));
-  edges.push([nearestIndex(pts, [0, perim], [-W / 2, barY, 0]), barStart]);
-  edges.push([barStart + bar - 1, nearestIndex(pts, [0, perim], [W / 2, barY, 0])]);
-  for (let i = 0; i < dots; i++) {
-    pts.push([-W / 2 + 0.24 + i * 0.22, H / 2 - 0.2, 0.02]);
-    scale.push(0.55);
-  }
-  return { pts, edges, scale };
-}
-
-/** Phone: tall outline, speaker slot, home dot. */
-function phoneIcon(k: number): IconShape {
-  const pts: Vec3[] = [];
-  const scale: number[] = [];
-  const edges: [number, number][] = [];
-  const speaker = k >= 20 ? 3 : 2;
-  const perim = k - speaker - 1;
-  pts.push(...rectLoop(1.05, 1.85, perim));
-  scale.push(...pts.map(() => 0.85));
-  edges.push(...loopEdges(0, perim));
-  const s0 = pts.length;
-  for (let i = 0; i < speaker; i++) {
-    pts.push([-0.14 + (0.28 * i) / (speaker - 1), 0.68, 0]);
-    scale.push(0.5);
-  }
-  edges.push(...chainEdges(s0, speaker));
-  pts.push([0, -0.68, 0.02]);
-  scale.push(1.1);
-  return { pts, edges, scale };
-}
-
-/** Agent: a hub with two rings — a thinking node connected to its tools. */
-function agentIcon(k: number): IconShape {
-  const pts: Vec3[] = [[0, 0, 0.05]];
-  const scale: number[] = [1.9];
-  const edges: [number, number][] = [];
-  const inner = Math.max(3, Math.floor((k - 1) * 0.36));
-  const outer = k - 1 - inner;
-  for (let i = 0; i < inner; i++) {
-    const a = (i / inner) * Math.PI * 2 + 0.3;
-    pts.push([Math.cos(a) * 0.48, Math.sin(a) * 0.48, Math.sin(a * 2) * 0.08]);
-    scale.push(0.95);
-    edges.push([0, 1 + i]);
-  }
-  const o0 = pts.length;
-  for (let i = 0; i < outer; i++) {
-    const a = (i / outer) * Math.PI * 2;
-    pts.push([Math.cos(a) * 0.95, Math.sin(a) * 0.95, Math.cos(a * 3) * 0.06]);
-    scale.push(0.6);
-  }
-  edges.push(...loopEdges(o0, outer));
-  for (let i = 0; i < outer; i += 2) {
-    edges.push([nearestIndex(pts, [1, o0], pts[o0 + i]), o0 + i]);
-  }
-  return { pts, edges, scale };
-}
-
-/** Workflow: four step nodes in a zig-zag chain with flow points between. */
-function workflowIcon(k: number): IconShape {
-  const steps: Vec3[] = [
-    [-1.3, -0.45, 0],
-    [-0.45, 0.45, 0],
-    [0.45, -0.45, 0],
-    [1.3, 0.45, 0],
-  ];
-  const between = k - steps.length;
-  const per = [0, 0, 0];
-  for (let i = 0; i < between; i++) per[i % 3]++;
-  const pts: Vec3[] = [];
-  const scale: number[] = [];
-  for (let s = 0; s < steps.length; s++) {
-    pts.push(steps[s]);
-    scale.push(1.7);
-    if (s < 3) {
-      const [ax, ay] = steps[s];
-      const [bx, by] = steps[s + 1];
-      for (let i = 1; i <= per[s]; i++) {
-        const t = i / (per[s] + 1);
-        pts.push([ax + (bx - ax) * t, ay + (by - ay) * t, 0]);
-        scale.push(0.45);
-      }
-    }
-  }
-  return { pts, edges: chainEdges(0, pts.length), scale };
-}
-
-const ICONS = [browserIcon, phoneIcon, agentIcon, workflowIcon];
 
 // ─── model builder ────────────────────────────────────────────────────────────
 
@@ -622,64 +461,39 @@ export function buildLattice(dims: [number, number, number]): LatticeModel {
     });
   }
 
-  // 7 — SERVICES: four icon clusters (browser, phone, agent, workflow) + far dust.
+  // 7 — SERVICES: a floating cluster (same family as the hero) in the empty
+  //     stage beside the section heading, clear of the text and the cards.
   {
-    const local = new Float32Array(N * 3);
-    const scale = new Float32Array(N);
-    const grp = new Uint8Array(N);
-    const k = Math.floor(N / 4);
-    // Assign nodes to clusters left→right so they travel without crossing much.
-    const order = [...all].sort(
-      (a, b) => grid[a * 3] - grid[b * 3] || grid[a * 3 + 1] - grid[b * 3 + 1],
-    );
-    const alpha = new Map<number, number>();
-    for (let c = 0; c < 4; c++) {
-      const ids = order.slice(c * k, c * k + k);
-      const shape = ICONS[c](k);
-      ids.forEach((node, j) => {
-        local.set(shape.pts[j] ?? [0, 0, 0], node * 3);
-        scale[node] = shape.scale[j] ?? 0.5;
-        grp[node] = c;
-      });
-      for (const [a, b] of shape.edges) alpha.set(addEdge(ids[a], ids[b], EDGE_SET.loose), 0.9);
-    }
-    const dust = order.slice(4 * k);
-    const dustPos = scatter(Math.max(1, dust.length), rand, [1, 1, 0.4], 0.3);
-    dust.forEach((node, j) => {
-      local.set(dustPos.subarray(j * 3, j * 3 + 3), node * 3);
-      scale[node] = 0.35;
-      grp[node] = 4;
-    });
+    const local = scatter(N, rand, [1, 0.85, 0.7], 0.26, true);
+    const ids = edgesFromPairs(nearestPairs(local, all, 2, 0.46), EDGE_SET.loose);
     pending.push({
       state: {
         name: "services",
         local,
-        scale,
-        group: grp,
+        scale: Float32Array.from({ length: N }, () => 0.45 + rand() * 0.75),
+        group: new Uint8Array(N),
         groups: [
-          ...[0, 1, 2, 3].map((c) =>
-            group({
-              anchor: `service-${c}`,
-              size: 0.78,
-              wobble: 0.28,
-              rot: [0.08, 0, 0],
-              parallax: 0.94,
-            }),
-          ),
-          group({ anchor: "services-stage", fit: "stretch", z: -3, parallax: 0.6 }),
+          group({
+            anchor: "services-cluster",
+            size: 0.92,
+            spin: 0.06,
+            wobble: 0.08,
+            rot: [0.12, 0, 0],
+            parallax: 0.9,
+          }),
         ],
         params: {
-          nodeScale: 0.55,
-          drift: 0.12,
-          pointer: 0.2,
-          flow: 0.4,
+          nodeScale: 0.9,
+          drift: 0.7,
+          pointer: 0.8,
+          flow: 0.3,
           scan: 0,
-          halo: 0.55,
-          line: 1,
+          halo: 0.65,
+          line: 0.7,
           night: 0,
         },
       },
-      alpha,
+      alpha: alphaOf(ids, 0.45),
     });
   }
 
